@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { carritoContext } from "./carritoContext"
+import Swal from "sweetalert2";
 
 const Carrito = ({children}) => {
 
@@ -16,7 +17,13 @@ const Carrito = ({children}) => {
                     return {...item, cantidad: item.cantidad + 1}
                  
                 }   else {
-                    alert('Cantidad no disponible')
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "error",
+                        title: "Cantidad no disponible",
+                        showConfirmButton: false,
+                        timer: 2000
+                      });
                     return {...item, cantidad: item.cantidad}
                 };
                   }else{

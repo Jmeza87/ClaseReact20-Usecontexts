@@ -74,6 +74,9 @@ const Header = () => {
         </li>
 
         <button className='btn btn-danger me-2'  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">  <CartFill  size={25} /> <span className="bagbe">{cart.length} / {total} / {totalPrecio.toFixed(2)} $</span></button>
+
+        <button className='btn btn-info me-2'  data-bs-toggle="modal" data-bs-target="#exampleModal"  >   <span className="bagbe">Ver detalles</span></button>
+
         
       </ul>
       <form className="d-flex" role="search" onSubmit={handleSubmit}>
@@ -129,6 +132,44 @@ const Header = () => {
                             )}
                         </div>
                     </div>
+
+
+                    <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog modal-xl">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+      </div>
+      <div className="modal-body">
+        <table className='table table-bordered text-center'>
+          <tbody><tr>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+              <th>Total</th>
+            </tr>
+
+            {cart.map((item) => (
+            <tr>
+              <td><img src= {item.thumbnail} alt="Descripción de la imagen" width={50} /></td>
+              <td>{item.title}</td>
+              <td>{item.cantidad}</td>
+              <td>{item.price}$</td>
+              <td>{(item.cantidad*item.price).toFixed(0).toLocaleString()}$</td>
+            </tr>
+            ))}
+          </tbody></table>
+      </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
           
     
     
