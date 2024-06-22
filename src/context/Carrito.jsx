@@ -12,7 +12,13 @@ const Carrito = ({children}) => {
             if(isItemInCart){
                 return currItems.map((item)=>{
                   if(item.id === producto.id){
-                    return {...item, cantidad: item.cantidad + 1};
+                    if(item.cantidad < item.stock){
+                    return {...item, cantidad: item.cantidad + 1}
+                 
+                }   else {
+                    alert('Cantidad no disponible')
+                    return {...item, cantidad: item.cantidad}
+                };
                   }else{
                     return item;
                   }  

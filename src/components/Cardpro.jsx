@@ -38,7 +38,7 @@ const totalProd=getCantidad(item)
           <div className="card-body text-center">
             <p>{item.title}</p>
 
-            <p className="text-danger">{item.stock}</p>
+            <p className="text-danger">Cantidad:  {item.stock}</p>
             <p className="text-danger">{item.price}$</p>
           </div>
 
