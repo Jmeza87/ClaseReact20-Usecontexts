@@ -2,3 +2,7 @@ body{
 
     margin-top: 80px;
 }
+
+p, h1,h2,h3,h4,h5, .nav-link{
+    text-shadow: 4px 4px 8px #000;
+  }

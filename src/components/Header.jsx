@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Filtroscategoria from './Filtroscategoria'
 import logo from '../assets/img/logo.png'
+import Login from "./Login";
 
 // para el contexto
 import { useContext } from "react";
@@ -73,6 +74,11 @@ const Header = () => {
           </ul>
         </li>
 
+        <li>
+        <button className='btn btn-dark m-2' data-bs-toggle="modal" data-bs-target="#login"> login </button>
+
+        </li>
+
         <button className='btn btn-danger me-2'  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">  <CartFill  size={25} /> <span className="bagbe">{cart.length} / {total} / {totalPrecio.toFixed(2)} $</span></button>
 
         <button className='btn btn-info me-2'  data-bs-toggle="modal" data-bs-target="#exampleModal"  >   <span className="bagbe">Ver detalles</span></button>
@@ -85,6 +91,8 @@ const Header = () => {
       </form>
     </div>
   </div>
+
+
 </nav>
 
 
@@ -171,6 +179,13 @@ const Header = () => {
 </div>
 
           
+
+          {/* Modal de login */}
+
+        <Login/>
+
+
+
     
     
     </>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Detalles from './Detalles'
 
 {/* se realiza importacion del contexts para usarlo */}
@@ -14,7 +14,14 @@ const Cardpro = ({item}) => {
   const getCantidad=(item)=>{
     return cart.find((producto)=> producto.id === item.id)?.cantidad || 0
 }
+
 const totalProd=getCantidad(item)
+
+
+const [cant, setCant] = useState(1);
+    const handleChange = (event) => {
+      setCant(event.target.value);
+    };
 
   return (
     <>
@@ -47,15 +54,48 @@ const totalProd=getCantidad(item)
               Ver detalles
             </a>
             <hr />
+            <div className="d-flex justify-content-center"> 
 
-            <button className="btn btn-success btn-sm mx-1" onClick={()=>agregar(item)}>+ Agregar</button>
 
-            {
+           {/* <button className="btn btn-success btn-sm mx-1" onClick={()=>agregar(item,cant)}>Agregar</button> */}
+
+           <button className={`btn btn-outline-${totalProd === 0 ? 'success' : 'warning'} btn-sm mx-1`} onClick={() => agregar(item, cant)}>
+            {totalProd === 0 ? 'Agregar' : 'Actualizar'}
+            </button>
+
+
+            <select
+                value={cant}
+                onChange={handleChange}
+                className="form-control bg-dark text-white-50"
+                style={{ width: 80 }}
+                
+                >
+                {Array.from({ length: item.stock },  (_, i) => i + 1).map((option) => (
+                    <option key={option} value={option}>
+                    {option}
+                    </option>
+                ))}
+                </select>
+
+
+           {/*<input 
+            type="number" 
+            value={cant} 
+            onChange={handleChange}
+            className="form-control bg-dark text-white"  
+            style={{width:80}} 
+            onFocus={(e) => e.target.select()}
+            min={1}
+            />*/} 
+
+            {/*
                         totalProd > 0 && (
                             <button className="btn btn-danger btn-sm mx-1" onClick={()=>eliminar(item)}>- Restar</button>
                         )
 
-                    }
+                    */}
+                    </div>
             
 
           </div>
